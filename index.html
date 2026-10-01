@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>오늘묵상 — 하루종일 하는 말씀묵상</title>
+<meta name="description" content="아침에 묵상한 구절과 내 노트가 잠금화면과 홈 화면 위젯에 하루 종일 머뭅니다.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cjs00oo.github.io/">
+<meta property="og:title" content="오늘묵상 — 하루종일 하는 말씀묵상">
+<meta property="og:description" content="아침에 묵상한 구절과 내 노트가 잠금화면과 홈 화면 위젯에 하루 종일 머뭅니다.">
+<meta property="og:image" content="https://cjs00oo.github.io/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<script>
+  // 휴대폰이면 그 스토어로 바로 보낸다 (공유 문구의 링크를 누른 사람이 한 번에 받도록)
+  // Play 정식 출시 전에는 안드로이드도 이 페이지에 머문다 → 출시 뒤 ANDROID_LIVE = true
+  var APP_STORE = 'https://apps.apple.com/kr/app/id6741053150';
+  var PLAY = 'https://play.google.com/store/apps/details?id=com.jisupchoi.oneulmuksang';
+  var ANDROID_LIVE = false;
+  (function () {
+    var ua = navigator.userAgent || '';
+    var stay = /[?&]stay=1/.test(location.search);
+    if (stay) return;
+    if (/iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && 'ontouchend' in document)) location.replace(APP_STORE);
+    else if (/Android/.test(ua) && ANDROID_LIVE) location.replace(PLAY);
+  })();
+</script>
+<style>
+  :root { --paper:#F9F3EC; --card:#FFFDFB; --text:#3B332B; --sub:#746C63; --gold:#85653A; --line:#E7E2DC; --btn:#201D1A; --btnText:#F9F3EC; }
+  @media (prefers-color-scheme: dark) {
+    :root { --paper:#1E1B18; --card:#322F2B; --text:#E9E1D9; --sub:#ACA59D; --gold:#E0BB8F; --line:#433F3B; --btn:#D7D1CA; --btnText:#1E1B18; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--paper); color:var(--text); font-family:Pretendard, -apple-system, "Apple SD Gothic Neo", sans-serif;
+         min-height:100vh; display:flex; align-items:center; justify-content:center; padding:40px 20px; }
+  main { width:100%; max-width:420px; text-align:center; }
+  .icon { width:96px; height:96px; border-radius:22px; display:block; margin:0 auto 24px; }
+  h1 { margin:0 0 6px; font-size:28px; font-weight:700; letter-spacing:-0.2px; }
+  .sub { margin:0 0 28px; font-size:15px; color:var(--sub); }
+  .lead { margin:0 0 32px; font-size:17px; line-height:1.6; word-break:keep-all; }
+  .btns { display:flex; flex-direction:column; gap:12px; align-items:center; }
+  a.btn { width:100%; max-width:290px; height:50px; border-radius:25px; display:flex; align-items:center; justify-content:center;
+          background:var(--btn); color:var(--btnText); text-decoration:none; font-size:16px; font-weight:600; }
+  .btn.soon { background:transparent; color:var(--sub); border:1.5px solid var(--line); pointer-events:none; }
+  footer { margin-top:40px; font-size:13px; color:var(--sub); line-height:1.7; }
+  footer a { color:var(--sub); }
+</style>
+</head>
+<body>
+<main>
+  <img class="icon" src="icon.png" alt="오늘묵상 앱 아이콘">
+  <h1>오늘묵상</h1>
+  <p class="sub">하루종일 하는 말씀묵상</p>
+  <p class="lead">아침에 묵상한 구절과 내 노트가<br>잠금화면과 홈 화면 위젯에 하루 종일 머뭅니다.</p>
+  <div class="btns">
+    <a class="btn" id="ios" href="https://apps.apple.com/kr/app/id6741053150">App Store에서 받기</a>
+    <a class="btn soon" id="android" href="https://play.google.com/store/apps/details?id=com.jisupchoi.oneulmuksang">Android는 곧 나와요</a>
+  </div>
+  <footer>
+    성경 본문은 개역한글판(대한성서공회)을 사용합니다.<br>
+    <a href="https://cjs00oo.github.io/oneulmuksang-legal/legal.html">이용약관 · 개인정보처리방침</a>
+  </footer>
+</main>
+<script>
+  if (ANDROID_LIVE) {
+    var a = document.getElementById('android');
+    a.classList.remove('soon'); a.textContent = 'Google Play에서 받기';
+  }
+</script>
+</body>
+</html>
