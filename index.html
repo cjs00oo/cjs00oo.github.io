@@ -4,16 +4,21 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>오늘묵상 — 하루종일 하는 말씀묵상</title>
-<meta name="description" content="아침에 묵상한 구절과 내 노트가 잠금화면과 홈 화면 위젯에 하루 종일 머뭅니다.">
+<meta name="description" content="아침에 묵상한 구절과 내 노트가 잠금화면과 홈 화면 위젯에 하루 종일 보입니다.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://cjs00oo.github.io/">
 <meta property="og:title" content="오늘묵상 — 하루종일 하는 말씀묵상">
-<meta property="og:description" content="아침에 묵상한 구절과 내 노트가 잠금화면과 홈 화면 위젯에 하루 종일 머뭅니다.">
+<meta property="og:description" content="아침에 묵상한 구절과 내 노트가 잠금화면과 홈 화면 위젯에 하루 종일 보입니다.">
 <meta property="og:image" content="https://cjs00oo.github.io/og.png">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F9F3EC" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1E1B18" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="icon.png">
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap">
 <script>
   // 휴대폰이면 그 스토어로 바로 보낸다 (공유 문구의 링크를 누른 사람이 한 번에 받도록)
   // Play 정식 출시 전에는 안드로이드도 이 페이지에 머문다 → 출시 뒤 ANDROID_LIVE = true
@@ -22,52 +27,125 @@
   var ANDROID_LIVE = false;
   (function () {
     var ua = navigator.userAgent || '';
-    var stay = /[?&]stay=1/.test(location.search);
-    if (stay) return;
+    if (/[?&]stay=1/.test(location.search)) return;
     if (/iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && 'ontouchend' in document)) location.replace(APP_STORE);
     else if (/Android/.test(ua) && ANDROID_LIVE) location.replace(PLAY);
   })();
 </script>
 <style>
-  :root { --paper:#F9F3EC; --card:#FFFDFB; --text:#3B332B; --sub:#746C63; --gold:#85653A; --line:#E7E2DC; --btn:#201D1A; --btnText:#F9F3EC; }
+  /* 앱과 같은 색 토큰 (docs/tokens.json) */
+  :root { --paper:#F9F3EC; --card:#FFFDFB; --text:#3B332B; --sub:#746C63; --faint:#9C958D; --gold:#85653A; --line:#E7E2DC; --mark:#FBD7AD; --btn:#201D1A; --btnText:#F9F3EC; }
   @media (prefers-color-scheme: dark) {
-    :root { --paper:#1E1B18; --card:#322F2B; --text:#E9E1D9; --sub:#ACA59D; --gold:#E0BB8F; --line:#433F3B; --btn:#D7D1CA; --btnText:#1E1B18; }
+    :root { --paper:#1E1B18; --card:#322F2B; --text:#E9E1D9; --sub:#ACA59D; --faint:#8A837B; --gold:#E0BB8F; --line:#433F3B; --mark:#5D482D; --btn:#D7D1CA; --btnText:#1E1B18; }
   }
   * { box-sizing: border-box; }
-  body { margin:0; background:var(--paper); color:var(--text); font-family:Pretendard, -apple-system, "Apple SD Gothic Neo", sans-serif;
-         min-height:100vh; display:flex; align-items:center; justify-content:center; padding:40px 20px; }
-  main { width:100%; max-width:420px; text-align:center; }
-  .icon { width:96px; height:96px; border-radius:22px; display:block; margin:0 auto 24px; }
-  h1 { margin:0 0 6px; font-size:28px; font-weight:700; letter-spacing:-0.2px; }
-  .sub { margin:0 0 28px; font-size:15px; color:var(--sub); }
-  .lead { margin:0 0 32px; font-size:17px; line-height:1.6; word-break:keep-all; }
-  .btns { display:flex; flex-direction:column; gap:12px; align-items:center; }
-  a.btn { width:100%; max-width:290px; height:50px; border-radius:25px; display:flex; align-items:center; justify-content:center;
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin:0; background:var(--paper); color:var(--text); font-family:Pretendard, -apple-system, "Apple SD Gothic Neo", sans-serif; }
+  .wrap { max-width:1040px; margin:0 auto; padding:0 20px; }
+
+  header.hero { display:grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap:56px; align-items:center; padding:88px 0 72px; }
+  .icon { width:72px; height:72px; border-radius:17px; display:block; margin-bottom:28px; }
+  .eyebrow { margin:0 0 10px; font-size:14px; font-weight:600; color:var(--gold); letter-spacing:0.2px; }
+  h1 { margin:0 0 18px; font-size:40px; line-height:1.3; font-weight:700; letter-spacing:-0.6px; word-break:keep-all; }
+  .lead { margin:0 0 32px; font-size:18px; line-height:1.7; color:var(--sub); word-break:keep-all; }
+  .btns { display:flex; gap:10px; flex-wrap:wrap; }
+  a.btn { height:50px; padding:0 26px; border-radius:25px; display:inline-flex; align-items:center; justify-content:center; gap:8px;
           background:var(--btn); color:var(--btnText); text-decoration:none; font-size:16px; font-weight:600; }
-  .btn.soon { background:transparent; color:var(--sub); border:1.5px solid var(--line); pointer-events:none; }
-  footer { margin-top:40px; font-size:13px; color:var(--sub); line-height:1.7; }
+  a.btn svg { width:18px; height:18px; fill:currentColor; }
+  .btn.soon { background:transparent; color:var(--sub); box-shadow: inset 0 0 0 1.5px var(--line); pointer-events:none; }
+
+  /* 잠금화면 알림 카드 모양의 말씀 — 앱이 실제로 보여 주는 것 */
+  .stage { display:flex; justify-content:center; }
+  .phone { width:300px; aspect-ratio: 9 / 18.5; border-radius:44px; padding:26px 18px; position:relative; overflow:hidden;
+           background: linear-gradient(160deg, #3a332c 0%, #1b1814 70%); }
+  .phone .time { color:#F3EBE1; font-size:64px; font-weight:200; letter-spacing:-1px; margin:38px 0 4px 8px; }
+  .phone .date { color:#cfc5b9; font-size:14px; margin:0 0 26px 10px; }
+  .noti { background:rgba(255,253,251,0.94); color:#3B332B; border-radius:20px; padding:14px 16px 16px; }
+  .noti .app { display:flex; align-items:center; gap:7px; font-size:12px; color:#746C63; margin-bottom:8px; }
+  .noti .app img { width:18px; height:18px; border-radius:5px; }
+  .noti .ref { font-size:13px; font-weight:600; color:#85653A; margin-bottom:4px; display:flex; justify-content:space-between; }
+  .noti .ref span { color:#9C958D; font-weight:500; }
+  .noti .verse { font-family:"Gowun Dodum", serif; font-size:16px; line-height:1.6; word-break:keep-all; margin:0 0 10px; }
+  .noti .note { font-size:12.5px; line-height:1.5; color:#746C63; border-top:1px solid #E7E2DC; padding-top:9px; margin:0; word-break:keep-all; }
+
+  section.shots { padding:24px 0 80px; }
+  .shots h2 { margin:0 0 6px; font-size:22px; font-weight:700; letter-spacing:-0.3px; }
+  .shots p.cap { margin:0 0 24px; font-size:15px; color:var(--sub); }
+  .row { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:20px; }
+  .row img { width:100%; height:auto; display:block; border-radius:18px; background:var(--card); }
+
+  .quote { border-top:1px solid var(--line); padding:56px 0; text-align:center; }
+  .quote p { margin:0 auto; max-width:520px; font-family:"Gowun Dodum", serif; font-size:21px; line-height:1.75; word-break:keep-all; }
+  .quote cite { display:block; margin-top:14px; font-style:normal; font-size:14px; font-weight:600; color:var(--gold); }
+
+  footer { border-top:1px solid var(--line); padding:28px 0 48px; font-size:13px; line-height:1.8; color:var(--sub); }
   footer a { color:var(--sub); }
+
+  @media (max-width: 760px) {
+    header.hero { grid-template-columns: minmax(0,1fr); gap:44px; padding:56px 0 40px; }
+    h1 { font-size:30px; }
+    .lead { font-size:16.5px; }
+    .btns { flex-direction:column; }
+    a.btn { width:100%; }
+    .phone { width:min(300px, 100%); }
+    .row { display:flex; overflow-x:auto; scroll-snap-type:x mandatory; gap:12px; margin:0 -20px; padding:0 20px 8px; }
+    .row img { flex:0 0 70%; scroll-snap-align:center; }
+    .quote p { font-size:18px; }
+  }
 </style>
 </head>
 <body>
-<main>
-  <img class="icon" src="icon.png" alt="오늘묵상 앱 아이콘">
-  <h1>오늘묵상</h1>
-  <p class="sub">하루종일 하는 말씀묵상</p>
-  <p class="lead">아침에 묵상한 구절과 내 노트가<br>잠금화면과 홈 화면 위젯에 하루 종일 머뭅니다.</p>
-  <div class="btns">
-    <a class="btn" id="ios" href="https://apps.apple.com/kr/app/id6741053150">App Store에서 받기</a>
-    <a class="btn soon" id="android" href="https://play.google.com/store/apps/details?id=com.jisupchoi.oneulmuksang">Android는 곧 나와요</a>
-  </div>
+<div class="wrap">
+  <header class="hero">
+    <div>
+      <img class="icon" src="icon.png" alt="오늘묵상 앱 아이콘" width="72" height="72">
+      <p class="eyebrow">오늘묵상</p>
+      <h1>하루종일 하는<br>말씀묵상</h1>
+      <p class="lead">아침에 묵상한 구절과 내 노트가<br>잠금화면과 홈 화면 위젯에 하루 종일 보입니다.</p>
+      <div class="btns">
+        <a class="btn" href="https://apps.apple.com/kr/app/id6741053150">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.37 12.6c-.03-2.6 2.13-3.86 2.23-3.92-1.22-1.78-3.11-2.02-3.78-2.05-1.6-.16-3.13.95-3.95.95-.82 0-2.07-.93-3.4-.9-1.75.03-3.37 1.02-4.27 2.58-1.82 3.16-.47 7.84 1.31 10.4.87 1.25 1.9 2.66 3.26 2.61 1.31-.05 1.8-.85 3.38-.85 1.58 0 2.02.85 3.4.82 1.41-.02 2.3-1.28 3.16-2.54.99-1.46 1.4-2.87 1.43-2.94-.03-.01-2.74-1.05-2.77-4.16zM13.78 4.95c.72-.88 1.21-2.1 1.08-3.31-1.04.04-2.3.69-3.05 1.57-.67.77-1.26 2.02-1.1 3.2 1.16.09 2.35-.59 3.07-1.46z"/></svg>
+          App Store
+        </a>
+        <a class="btn soon" id="android" href="https://play.google.com/store/apps/details?id=com.jisupchoi.oneulmuksang">Android는 곧 나와요</a>
+      </div>
+    </div>
+    <div class="stage" aria-hidden="true">
+      <div class="phone">
+        <div class="time">7:02</div>
+        <div class="date">10월 2일 금요일</div>
+        <div class="noti">
+          <div class="app"><img src="icon.png" alt="">오늘묵상</div>
+          <div class="ref">시편 119:97 <span>1 / 4</span></div>
+          <p class="verse">내가 주의 법을 어찌 그리 사랑하는지요 내가 그것을 종일 묵상하나이다</p>
+          <p class="note">내 감정과 생각이 아니라 아버지 말씀을 종일 묵상하게 도와주세요</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <section class="shots">
+    <div class="row">
+      <img src="shot1.jpg" alt="잠금화면에 오늘 담은 구절과 노트가 보이는 화면" width="600" height="1067" loading="lazy">
+      <img src="shot2.jpg" alt="본문에서 구절을 누르면 노트에 담기는 화면" width="600" height="1067" loading="lazy">
+      <img src="shot3.jpg" alt="홈 화면 위젯에 구절과 노트가 보이는 화면" width="600" height="1067" loading="lazy">
+    </div>
+  </section>
+
+  <section class="quote">
+    <p>내가 주의 법을 어찌 그리 사랑하는지요<br>내가 그것을 종일 묵상하나이다</p>
+    <cite>시편 119:97</cite>
+  </section>
+
   <footer>
     성경 본문은 개역한글판(대한성서공회)을 사용합니다.<br>
     <a href="https://cjs00oo.github.io/oneulmuksang-legal/legal.html">이용약관 · 개인정보처리방침</a>
   </footer>
-</main>
+</div>
 <script>
   if (ANDROID_LIVE) {
     var a = document.getElementById('android');
-    a.classList.remove('soon'); a.textContent = 'Google Play에서 받기';
+    a.classList.remove('soon'); a.textContent = 'Google Play';
   }
 </script>
 </body>
