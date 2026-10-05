@@ -128,9 +128,10 @@
 
   <section class="shots">
     <div class="row">
-      <img src="shot1.jpg" alt="잠금화면에 오늘 담은 구절과 노트가 보이는 화면" width="600" height="1067" loading="lazy">
-      <img src="shot2.jpg" alt="본문에서 구절을 누르면 노트에 담기는 화면" width="600" height="1067" loading="lazy">
-      <img src="shot3.jpg" alt="홈 화면 위젯에 구절과 노트가 보이는 화면" width="600" height="1067" loading="lazy">
+      <!-- 기본은 iPhone 화면(App Store 스크린샷) · Android 로 들어오면 아래 스크립트가 Play 스크린샷으로 바꾼다 -->
+      <img src="ios1.jpg" data-aos="shot1.jpg" data-aos-alt="잠금화면에 오늘 담은 구절과 노트가 보이는 화면" alt="잠금화면에 오늘 묵상한 구절이 보이는 화면" width="600" height="1303" loading="lazy">
+      <img src="ios2.jpg" data-aos="shot2.jpg" data-aos-alt="본문에서 구절을 누르면 노트에 담기는 화면" alt="본문에서 구절을 누르면 노트에 담기는 화면" width="600" height="1303" loading="lazy">
+      <img src="ios3.jpg" data-aos="shot3.jpg" data-aos-alt="홈 화면 위젯에 구절과 노트가 보이는 화면" alt="잠금화면 Live Activity에 구절과 내가 쓴 묵상이 보이는 화면" width="600" height="1303" loading="lazy">
     </div>
   </section>
 
@@ -145,6 +146,13 @@
   </footer>
 </div>
 <script>
+  // 안드로이드로 들어온 사람에게는 안드로이드 화면을 보여 준다 (아이폰은 위에서 App Store 로 바로 가므로 여기 오는 건 주로 PC·안드로이드)
+  if (/Android/.test(navigator.userAgent || '')) {
+    document.querySelectorAll('.shots img[data-aos]').forEach(function (im) {
+      im.src = im.getAttribute('data-aos'); im.alt = im.getAttribute('data-aos-alt');
+      im.setAttribute('height', '1067');
+    });
+  }
   if (ANDROID_LIVE) {
     var a = document.getElementById('android');
     a.classList.remove('soon'); a.textContent = 'Google Play';
