@@ -13,6 +13,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#F9F3EC" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#1E1B18" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://cjs00oo.github.io/">
+<meta name="google-site-verification" content="EYYzfshGNQpXVC-B0bw89O5fmL-CHn8R-ZsYFQGS9YY">
 <link rel="icon" href="icon.png">
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
@@ -28,6 +30,8 @@
   (function () {
     var ua = navigator.userAgent || '';
     if (/[?&]stay=1/.test(location.search)) return;
+    // 검색 로봇(구글 모바일 로봇은 Android 로 들어온다)은 스토어로 보내지 않는다 — 이 페이지가 검색에 잡히도록
+    if (/bot|crawl|spider|slurp|Google-InspectionTool|Lighthouse/i.test(ua)) return;
     if (/iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && 'ontouchend' in document)) location.replace(APP_STORE);
     else if (/Android/.test(ua) && ANDROID_LIVE) location.replace(PLAY);
   })();
