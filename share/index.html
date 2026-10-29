@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>묵상생활의 경험을 나눠주세요 | 오늘묵상</title>
+<meta name="description" content="말씀을 붙잡으려고 해 본 시도와 경험을 나눠 주세요. 이 일에 힘쓰는 사람들에게 큰 도움이 됩니다.">
+<link rel="canonical" href="https://cjs00oo.github.io/share/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="오늘묵상">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:url" content="https://cjs00oo.github.io/share/">
+<meta property="og:title" content="묵상생활의 경험을 나눠주세요 | 오늘묵상">
+<meta property="og:description" content="말씀을 붙잡으려고 해 본 시도와 경험을 나눠 주세요. 이 일에 힘쓰는 사람들에게 큰 도움이 됩니다.">
+<meta property="og:image" content="https://cjs00oo.github.io/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F9F3EC" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1E1B18" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="../icon.png">
+<link rel="apple-touch-icon" href="../icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/share.css">
+</head>
+<body>
+<header class="site-head">
+  <div class="wrap head-in">
+    <a class="brand" href="../index.html"><img src="../icon.png" alt="" width="30" height="30">오늘묵상</a>
+    <nav class="nav" aria-label="주요 메뉴"><a href="../guide/index.html">사용 가이드</a><a href="../news/index.html">소식</a><a href="../share/index.html" aria-current="page">나눔</a></nav>
+  </div>
+</header>
+<main class="wrap">
+  <div class="page-head share-head">
+    <p class="eyebrow">나눔</p>
+    <h1>묵상생활의 경험을<br class="br-m"> 나눠주세요</h1>
+    <p class="lead">이 앱의 방식 말고도 다양한 시도와 노력이 있을 것 같아요. 나눠주시면 이 일에 힘쓰는 사람들(저 포함)에게 엄청난 도움이 될 거예요.</p>
+  </div>
+
+  <section class="share-box" aria-label="나눔 보내기">
+    <form id="share-form" class="share-form" novalidate>
+      <div class="field">
+        <label for="f-nick">닉네임 <em>필수</em></label>
+        <input id="f-nick" name="nick" type="text" maxlength="20" autocomplete="nickname" required>
+        <p class="hint">사이트에 실릴 때 이 이름으로 나가요.</p>
+      </div>
+
+      <div class="field">
+        <label for="f-tried">말씀을 붙잡으려고 해 본 것 <em>필수</em></label>
+        <p class="hint">방법, 도구, 습관 무엇이든 좋아요. 잘 안 됐던 시도도 좋아요.</p>
+        <textarea id="f-tried" name="tried" rows="6" maxlength="2000" required></textarea>
+        <p class="count" aria-live="polite"><span data-count-for="f-tried">0</span> / 2000</p>
+      </div>
+
+      <div class="field">
+        <label for="f-verse">요즘 붙잡고 있는 말씀 <em class="opt">선택</em></label>
+        <input id="f-verse" name="verse" type="text" maxlength="100" placeholder="예: 시편 119:97">
+      </div>
+
+      <div class="field">
+        <label for="f-more">더 나누고 싶은 이야기 <em class="opt">선택</em></label>
+        <p class="hint">도움이 됐던 것, 어려웠던 것, 바라는 것</p>
+        <textarea id="f-more" name="more" rows="4" maxlength="1000"></textarea>
+        <p class="count" aria-live="polite"><span data-count-for="f-more">0</span> / 1000</p>
+      </div>
+
+      <!-- 사람에게는 안 보이는 칸 (자동 입력 막기) -->
+      <div class="hp" aria-hidden="true">
+        <label for="f-website">웹사이트</label>
+        <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+      </div>
+
+      <label class="check">
+        <input id="f-consent" name="consent" type="checkbox">
+        <span class="box" aria-hidden="true"></span>
+        <span>닉네임으로 이 사이트에 실려도 괜찮아요</span>
+      </label>
+
+      <p class="privacy">이메일·전화번호는 받지 않아요. 글 안에도 연락처나 실명은 적지 말아 주세요. 실어도 된다고 하신 글은 주인장이 문제가 될 글인지만 확인하고 이 페이지에 올려요.</p>
+
+      <p class="err" id="share-err" role="alert" hidden></p>
+      <button class="send" type="submit">보내기</button>
+    </form>
+
+    <div class="share-done" id="share-done" hidden tabindex="-1">
+      <span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+      <h2>잘 받았어요. 고맙습니다</h2>
+      <p>보내 주신 이야기는 제가 하나씩 읽을게요.</p>
+      <button class="again" type="button" id="share-again">하나 더 나누기</button>
+    </div>
+  </section>
+
+  <div class="ask" id="share-ask" hidden>
+    <div class="ask-card" role="dialog" aria-modal="true" aria-labelledby="ask-t" aria-describedby="ask-d" tabindex="-1">
+      <h2 id="ask-t">사이트에 실어도 될까요?</h2>
+      <p id="ask-d">실어도 괜찮다면 주인장이 문제가 될 글인지만 확인하고 이 페이지에 올려요. 아니면 저만 읽어요.</p>
+      <div class="ask-btns">
+        <button type="button" class="send" id="ask-yes">실어도 괜찮아요</button>
+        <button type="button" class="again" id="ask-no">저만 읽어 주세요</button>
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="../index.html"><img src="../icon.png" alt="" width="30" height="30">오늘묵상</a>
+        <p>하루종일 하는 말씀묵상</p>
+        <p class="contact">문의 cjs00oo23@naver.com</p>
+      </div>
+      <div>
+        <h2>둘러보기</h2>
+        <ul><li><a href="../guide/index.html">사용 가이드</a></li><li><a href="../news/index.html">소식</a></li><li><a href="../share/index.html">나눔</a></li></ul>
+      </div>
+      <div>
+        <h2>앱 받기</h2>
+        <ul><li><a href="https://apps.apple.com/kr/app/id6796581662">App Store</a></li><li><a href="https://play.google.com/store/apps/details?id=com.jisupchoi.oneulmuksang">Google Play</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-legal">
+      개발자 JISUP CHOI(최지섭) · 성경 본문은 개역한글판(대한성서공회)을 사용합니다.<br>
+      <a href="https://cjs00oo.github.io/oneulmuksang-legal/legal.html">이용약관 · 개인정보처리방침</a> · © 2026 JISUP CHOI
+    </div>
+  </div>
+</footer>
+<script src="../assets/share.js"></script>
+</body>
+</html>
